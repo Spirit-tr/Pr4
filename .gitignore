@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# Ignorowanie folderu VS
+.vs/
+
+
 # Object files
 *.o
 *.ko

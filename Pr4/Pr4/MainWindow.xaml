@@ -1,0 +1,114 @@
+﻿<Window x:Class="Pr4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pr4"
+        mc:Ignorable="d"
+        Title="Analiza Danych Pogodowych" Height="600" Width="900">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#87CEFA" Offset="0.0"/>
+            <GradientStop Color="#4682B4" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Window.Resources>
+        <!-- Styl przycisku -->
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2980b9"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#1f6391"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Styl ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#2980b9"/>
+        </Style>
+
+        <!-- Styl DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="RowBackground" Value="WhiteSmoke"/>
+            <Setter Property="AlternatingRowBackground" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Styl TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Nagłówek -->
+        <TextBlock Text="📊 Aplikacja do Analizy Danych Pogodowych" 
+                   FontSize="24" FontWeight="Bold" Foreground="White"
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Przyciski -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="📂 Wczytaj dane" Click="LoadData_Click" Width="160"/>
+            <ComboBox x:Name="ParameterComboBox" Width="160" SelectionChanged="ParameterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Temperatura" IsSelected="True"/>
+                <ComboBoxItem Content="Wilgotność"/>
+                <ComboBoxItem Content="Ciśnienie"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="WeatherDataGrid" Grid.Row="1" AutoGenerateColumns="True"/>
+
+        <!-- Statystyki -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="📊 Średnia:" Foreground="Black"/>
+            <TextBlock x:Name="AverageValueText" Foreground="Black"/>
+            <TextBlock Text="📉 Min:" Foreground="Black"/>
+            <TextBlock x:Name="MinValueText" Foreground="Black"/>
+            <TextBlock Text="📈 Max:" Foreground="Black"/>
+            <TextBlock x:Name="MaxValueText" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>
