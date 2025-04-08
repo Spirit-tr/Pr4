@@ -15,7 +15,7 @@
     </Window.Background>
 
     <Window.Resources>
-        <!-- Styl przycisku -->
+        
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="14"/>
@@ -49,7 +49,7 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Styl ComboBox -->
+        
         <Style TargetType="ComboBox">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Padding" Value="5"/>
@@ -58,7 +58,7 @@
             <Setter Property="BorderBrush" Value="#2980b9"/>
         </Style>
 
-        <!-- Styl DataGrid -->
+
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -68,7 +68,7 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
 
-        <!-- Styl TextBlock -->
+
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -83,27 +83,27 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Nagłówek -->
+
         <TextBlock Text="📊 Aplikacja do Analizy Danych Pogodowych" 
                    FontSize="24" FontWeight="Bold" Foreground="White"
                    HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
-        <!-- Przyciski -->
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="📂 Wczytaj dane" Click="LoadData_Click" Width="160"/>
+            <Button Content="📂 Load data" Click="LoadData_Click" Width="160"/>
             <ComboBox x:Name="ParameterComboBox" Width="160" SelectionChanged="ParameterComboBox_SelectionChanged">
-                <ComboBoxItem Content="Temperatura" IsSelected="True"/>
+                <ComboBoxItem Content="Temperature" IsSelected="True"/>
                 <ComboBoxItem Content="Wilgotność"/>
                 <ComboBoxItem Content="Ciśnienie"/>
             </ComboBox>
         </StackPanel>
 
-        <!-- DataGrid -->
+
         <DataGrid x:Name="WeatherDataGrid" Grid.Row="1" AutoGenerateColumns="True"/>
 
-        <!-- Statystyki -->
+
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <TextBlock Text="📊 Średnia:" Foreground="Black"/>
+            <TextBlock Text="📊 Average:" Foreground="Black"/>
             <TextBlock x:Name="AverageValueText" Foreground="Black"/>
             <TextBlock Text="📉 Min:" Foreground="Black"/>
             <TextBlock x:Name="MinValueText" Foreground="Black"/>
